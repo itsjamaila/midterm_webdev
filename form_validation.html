@@ -1,74 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./form_validation.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./form_validation.css" />
     <title>Form Validation</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container flex-nowrap">
-        <div class="row">
-            <div class="col-sm first"></div>
-            <div class="col-sm-5 second ps-5">
-                <div class="row mt-4 mb-3">
-                    <div class="col-sm d-flex align-items-center justify-content-center">
-                        <img src="./sign-up.png" alt="Sign Up Icon" width="60px">
-                        <p class="fs-2 text-center ms-2 fw-bold m-0">Create an Account</p>
-                    </div>
-                </div>
-                <hr class="border border-danger">
-                <form action="#">
-                    <div class="row">
-                        <label for="Full Name" class="form-label my-3 fw-bold">Full Name</label>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                        </div>
-                    </div>
-                    <div class="my-3">
-                        <label for="email" class="form-label fw-bold">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                    </div>
-                    <div class="my-3">
-                        <label for="birthday" class="form-label fw-bold">Birthday</label>
-                        <input type="date" class="form-control" id="birthday" placeholder="Enter birthday"
-                            name="birthday">
-                    </div>
-                    <div class="my-3">
-                        <label for="pwd" class="form-label fw-bold">Password</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                    </div>
-                    <div class="d-flex justify-content-center mt-4">
-                        <button type="submit"class="btn btn-outline-danger">Submit</button>
-                    </div>
-
-                </form>
+      <div class="row">
+        <div class="col-sm first"></div>
+        <div class="col-sm-5 second ps-5">
+          <div class="row mt-4 mb-3">
+            <div
+              class="col-sm d-flex align-items-center justify-content-center"
+            >
+              <img src="./sign-up.png" alt="Sign Up Icon" width="60px" />
+              <p class="fs-2 text-center ms-2 fw-bold m-0">Create an Account</p>
             </div>
+          </div>
+          <hr class="border border-danger" />
+          <form action="#" id="form">
+            <div class="row">
+              <label for="Full Name" class="form-label mt-2 fw-bold"
+                >Full Name</label
+              >
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstname"
+                  placeholder="First name"
+                  aria-label="First name"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  id="lastname"
+                  class="form-control"
+                  placeholder="Last name"
+                  aria-label="Last name"
+                />
+              </div>
+            </div>
+            <div class="mt-2">
+              <label for="email" class="form-label fw-bold">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter email"
+                name="email"
+                onblur="validateEmail()"
+              />
+            </div>
+            <div class="mt-2">
+              <label for="birthday" class="form-label fw-bold">Birthday</label>
+              <input
+                type="date"
+                class="form-control"
+                id="birthday"
+                placeholder="Enter birthday"
+                name="birthday"
+                onblur="getAge()"
+              />
+              <span id="age"></span>
+            </div>
+            <div class="mt-2">
+                <label for="phoneNumber" class="form-label fw-bold">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="number"
+                  placeholder="Enter phone number"
+                  name="number"
+                />
+                <span id="age"></span>
+              </div>
+            <div class="mt-2">
+              <label for="pwd" class="form-label fw-bold">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Enter password"
+                name="pswd"
+              />
+            </div>
+            <div class="mt-2">
+                <label for="pwd" class="form-label fw-bold">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmpass"
+                  placeholder="Enter password again"
+                  name="pswd"
+                />
+              </div>
+            <div class="d-flex justify-content-center mt-4">
+              <button type="submit" class="btn btn-outline-danger">
+                Create Account
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</body>
-<script>
-    CheckInputtedPassword = (pass) => {
-        var restriction = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-        if (pass.value.match(restriction)) {
-            alert('Your password must have 8 characters or more, and contain at least one special character, number, uppercase letter, and lowercase letter.')
-            return true;
-        } else {
-            return false;
+  </body>
+  <script>
+    function validateEmail(){
+        var email = document.getElementById("email").value;
+        var form = document.getElementById("form");
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        if (email.test(format)){
+            alert("sjbd");
         }
     }
-
-</script>
-
+  </script>
 </html>
